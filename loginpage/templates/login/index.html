@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- Website - www.codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login  Form </title>
+    {% load static %}
+    {% block css_files %}
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    {% endblock %}
+  </head>
+  <body>
+    <section class="wrapper">
+      <div class="form signup">
+        <header>Signup</header>
+        <form action="" method= "POST" id="myForm">
+          {% csrf_token %}
+          {% if error_message %}
+           <p  style="color: white;">{{ error_message }}</p>
+         {% endif %}
+          <input type="text" placeholder="Full name" name="Name"  required />
+          {% if error_email_message %}
+           <p  style="color: white;">{{ error_email_message }}</p>
+         {% endif %} 
+          <input id ="email" type="text" placeholder="Email address" name="Email" required />
+          {% if error_password_message %}
+           <p  style="color: white;">{{ error_password_message }}</p>
+         {% endif %}
+          <input type="password" placeholder="Password" name="Password" autocomplete="new-password" required />
+          {% if error_conf_pass %}
+           <p  style="color: white;">{{ error_conf_pass }}</p>
+         {% endif %}
+          <input type="password" placeholder="Confirm Password" name="ConfirmPass" required />
+          <input type="submit" value="Signup" />
+        </form>
+          </div>
+          <script>
+            function validateEmail(email) {
+              const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+              return emailRegex.test(email);
+            }
+          </script>
+
+    </section>
+  </body>
+</html>

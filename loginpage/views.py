@@ -48,4 +48,12 @@ def loginPage(request):
 def homePage(request):
     return render(request,"login/home.html")
 
+#custom
+def custom_page_not_found_view(request, exception):
+    return render(request, 'login/404.html', {}, status=404)
+# def custom_page_not_found(request, exception):
+#     return render(request, 'login/404.html', {}, status=404)
+# def error_404(request, exception):
+#     return render(request, 'login/404.html', status=404)
+
  

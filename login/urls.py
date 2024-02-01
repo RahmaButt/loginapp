@@ -15,9 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
+from django.http import HttpResponseNotFound
 from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("loginpage.urls")),
-     path('', include('django.views.generic.base.RedirectView'), redirect_to='/404/')
-]
+] 
+# handler404 = 'loginpage.views.error_404'
+# if settings.DEBUG is False:
+#     handler404 = 'myapp.views.custom_page_not_found'
